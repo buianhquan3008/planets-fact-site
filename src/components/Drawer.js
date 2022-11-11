@@ -8,12 +8,29 @@ import ListItemText from '@material-ui/core/ListItemText';
 import { IconButton } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import data from '../data.json';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme)=>({
     list: {
         marginTop: 70,
-        width: 600,
+        width: '100vw',
         color: 'white',
+        background: 'transparent',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    listWrap: {
+        width: '90vw',
+        
+    },
+    item: {
+        padding: 20,
+        width: '100%',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.2)',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
     },
     paper: {
         background: 'transparent',
@@ -21,10 +38,39 @@ const useStyles = makeStyles({
     menuButton: {
         color: 'white',
     },
-});
+    circleColor: {
+        width: 20,
+        height: 20,
+        background: 'red',
+        marginRight: 15,
+        borderRadius: '50%'
+    },
+    text: {
+        fontFamily: 'League Spartan',
+        fontStyle: 'normal',
+        fontWeight: 700,
+        fontSize: '20px',
+        lineHeight: '25px',
+        letterSpacing: '1.36364px',
+        textTransform: 'uppercase',
+        color: 'white',
+    },
+    itemText: {
+        display: 'flex',
+    },
+    icon: {
+        color: 'rgba(255, 255, 255, 0.2)',
+    },
+    drawer: {
+        display: 'block',
+        [theme.breakpoints.up('md')]: {
+            display: 'none',
+        },
+    },
+}));
 
 export default function TemporaryDrawer() {
-    const classes = useStyles();
+    const classes = useStyles({ data });
     const [state, setState] = React.useState({
         left: false,
     });
@@ -47,10 +93,14 @@ export default function TemporaryDrawer() {
             onClick={toggleDrawer(anchor, false)}
             onKeyDown={toggleDrawer(anchor, false)}
         >
-            <List>
+            <List className={classes.listWrap}>
                 {data.map((item, index) => (
-                    <ListItem button key={item.name}>
-                        <ListItemText primary={item.name} />
+                    <ListItem button key={item.name} className={classes.item}>
+                        <div className={classes.itemText}>
+                            <div className={classes.circleColor} style={{background: item.color}}></div>
+                            <div className={classes.text}>{item.name}</div>
+                        </div>
+                        <ChevronRightIcon className={classes.icon}/>
                     </ListItem>
                 ))}
             </List>
@@ -58,7 +108,7 @@ export default function TemporaryDrawer() {
     );
 
     return (
-        <div>
+        <div  className={classes.drawer}>
             <React.Fragment key='left'>
                 <IconButton
                     edge='start'
