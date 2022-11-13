@@ -1,16 +1,14 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
-import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
 import { IconButton } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import data from '../data.json';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
-const useStyles = makeStyles((theme)=>({
+const useStyles = makeStyles((theme) => ({
     list: {
         marginTop: 70,
         width: '100vw',
@@ -22,7 +20,6 @@ const useStyles = makeStyles((theme)=>({
     },
     listWrap: {
         width: '90vw',
-        
     },
     item: {
         padding: 20,
@@ -34,6 +31,17 @@ const useStyles = makeStyles((theme)=>({
     },
     paper: {
         background: 'transparent',
+        display: 'block',
+        [theme.breakpoints.up('md')]: {
+            display: 'none',
+        },
+    },
+    slide: {
+        // background: 'transparent',
+        display: 'block',
+        [theme.breakpoints.up('md')]: {
+            display: 'none',
+        },
     },
     menuButton: {
         color: 'white',
@@ -43,7 +51,7 @@ const useStyles = makeStyles((theme)=>({
         height: 20,
         background: 'red',
         marginRight: 15,
-        borderRadius: '50%'
+        borderRadius: '50%',
     },
     text: {
         fontFamily: 'League Spartan',
@@ -97,10 +105,13 @@ export default function TemporaryDrawer() {
                 {data.map((item, index) => (
                     <ListItem button key={item.name} className={classes.item}>
                         <div className={classes.itemText}>
-                            <div className={classes.circleColor} style={{background: item.color}}></div>
+                            <div
+                                className={classes.circleColor}
+                                style={{ background: item.color }}
+                            ></div>
                             <div className={classes.text}>{item.name}</div>
                         </div>
-                        <ChevronRightIcon className={classes.icon}/>
+                        <ChevronRightIcon className={classes.icon} />
                     </ListItem>
                 ))}
             </List>
@@ -108,7 +119,7 @@ export default function TemporaryDrawer() {
     );
 
     return (
-        <div  className={classes.drawer}>
+        <div className={classes.drawer}>
             <React.Fragment key='left'>
                 <IconButton
                     edge='start'

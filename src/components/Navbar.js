@@ -10,10 +10,10 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         paddingLeft: '10px',
         [theme.breakpoints.up('md')]: {
-            flexDirection: 'column'
+            flexDirection: 'column',
         },
         [theme.breakpoints.up('lg')]: {
-            flexDirection: 'row'
+            flexDirection: 'row',
         },
     },
     logo: {
@@ -44,7 +44,7 @@ export const Navbar = () => {
         <>
             <div className={classes.navbar}>
                 <div className={classes.logo}>THE PLANETS</div>
-                <TemporaryDrawer/>
+                <TemporaryDrawer />
                 <ListPlanet />
             </div>
             <div className={classes.line}></div>
