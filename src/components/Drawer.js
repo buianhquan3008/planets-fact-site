@@ -10,7 +10,7 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 const useStyles = makeStyles((theme) => ({
     list: {
-        marginTop: 70,
+        marginTop: 20,
         width: '100vw',
         color: 'white',
         background: 'transparent',
@@ -30,8 +30,10 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
     },
     paper: {
-        background: 'transparent',
+        background: '#070724',
         display: 'block',
+        // height: 'calc(100% - 60px)',
+        top: 50,
         [theme.breakpoints.up('md')]: {
             display: 'none',
         },
