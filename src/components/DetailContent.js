@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
     },
     imgWrap: {
         width: '100%',
-        height: 350,
+        height: '350px',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -19,21 +19,31 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     backgroundImage: {
-        background: `url(../assets/planet-earth.svg)`,
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        height: 173,
-        width: 173,
+        width: '30%',
+        height: 'auto',
         [theme.breakpoints.up('md')]: {
-            height: 285,
-            width: 285,
+            width: '20%',
         },
-
         [theme.breakpoints.up('lg')]: {
-            height: 450,
-            width: 450,
+            width: '40%',
         },
     },
+    // backgroundImage: {
+    //     background: `url(../assets/planet-earth.svg)`,
+    //     backgroundRepeat: 'no-repeat',
+    //     backgroundSize: 'cover',
+    //     height: 173,
+    //     width: 173,
+    //     [theme.breakpoints.up('md')]: {
+    //         height: 285,
+    //         width: 285,
+    //     },
+
+    //     [theme.breakpoints.up('lg')]: {
+    //         height: 450,
+    //         width: 450,
+    //     },
+    // },
     planetName: {
         fontFamily: 'Antonio',
         fontStyle: 'normal',
@@ -109,7 +119,7 @@ const useStyles = makeStyles((theme) => ({
         padding: 10,
         [theme.breakpoints.up('md')]: {
             flexDirection: 'column',
-            width: 180,
+            width: '25%',
             height: 88,
             justifyContent: 'space-evenly',
             alignItems: 'start',
@@ -196,7 +206,11 @@ export default function DetailContent() {
         <div className={classes.detailContentWrap}>
             <div className={classes.contentImgWrap}>
                 <div className={classes.imgWrap}>
-                    <div className={classes.backgroundImage}></div>
+                    <img
+                        className={classes.backgroundImage}
+                        src='../assets/planet-earth.svg'
+                        alt='source'
+                    />
                 </div>
                 <div className={classes.contentWithListContent}>
                     <div className={classes.contentWrap}>
