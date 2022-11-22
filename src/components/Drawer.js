@@ -79,7 +79,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function TemporaryDrawer() {
+export default function TemporaryDrawer({ planetId, setPlanetId }) {
     const classes = useStyles({ data });
     const [state, setState] = React.useState({
         left: false,
@@ -105,7 +105,12 @@ export default function TemporaryDrawer() {
         >
             <List className={classes.listWrap}>
                 {data.map((item, index) => (
-                    <ListItem button key={item.name} className={classes.item}>
+                    <ListItem
+                        button
+                        key={item.name}
+                        className={classes.item}
+                        onClick={() => setPlanetId(item.id)}
+                    >
                         <div className={classes.itemText}>
                             <div
                                 className={classes.circleColor}

@@ -1,5 +1,6 @@
 import { makeStyles } from '@material-ui/core';
 import React from 'react';
+import data from '../data.json';
 
 const useStyles = makeStyles((theme) => ({
     detailContentWrap: {
@@ -200,7 +201,13 @@ const useStyles = makeStyles((theme) => ({
     // }
 }));
 
-export default function DetailContent() {
+export default function DetailContent({
+    planetId,
+    setPlanetId,
+    content,
+    setContent,
+}) {
+    console.log(planetId);
     const classes = useStyles();
     return (
         <div className={classes.detailContentWrap}>
@@ -208,20 +215,17 @@ export default function DetailContent() {
                 <div className={classes.imgWrap}>
                     <img
                         className={classes.backgroundImage}
-                        src='../assets/planet-earth.svg'
+                        src={data[planetId].images.planet}
                         alt='source'
                     />
                 </div>
                 <div className={classes.contentWithListContent}>
                     <div className={classes.contentWrap}>
-                        <div className={classes.planetName}>EARTH</div>
+                        <div className={classes.planetName}>
+                            {data[planetId].name}
+                        </div>
                         <div className={classes.desc}>
-                            Third planet from the Sun and the only known planet
-                            to harbor life. About 29.2% of Earth's surface is
-                            land with remaining 70.8% is covered with water.
-                            Earth's distance from the Sun, physical properties
-                            and geological history have allowed life to evolve
-                            and thrive.
+                            {data[planetId][content].content}
                         </div>
                         <div className={classes.source}>
                             <p className={classes.p}>Source&nbsp;:&nbsp;</p>
@@ -241,7 +245,16 @@ export default function DetailContent() {
                             ['02', 'STRUCTURE'],
                             ['03', 'SURFACE'],
                         ].map((item) => (
-                            <div className={classes.detailContent}>
+                            <div
+                                className={classes.detailContent}
+                                onClick={() =>
+                                    setContent(
+                                        item[1] !== 'SURFACE'
+                                            ? item[1].toLowerCase()
+                                            : 'geology'
+                                    )
+                                }
+                            >
                                 <span className={classes.number}>
                                     {item[0]}&nbsp;&nbsp;
                                 </span>
@@ -254,19 +267,27 @@ export default function DetailContent() {
             <div className={classes.params}>
                 <div className={classes.paramWrap}>
                     <div className={classes.param}>ROTATION TIME</div>
-                    <div className={classes.value}>0.99 DAYS</div>
+                    <div className={classes.value}>
+                        {data[planetId]['rotation']}
+                    </div>
                 </div>
                 <div className={classes.paramWrap}>
                     <div className={classes.param}>REVOLUTION TIME</div>
-                    <div className={classes.value}>365.26 DAYS</div>
+                    <div className={classes.value}>
+                        {data[planetId]['revolution']}
+                    </div>
                 </div>
                 <div className={classes.paramWrap}>
                     <div className={classes.param}>RADIUS</div>
-                    <div className={classes.value}>6.371 KM</div>
+                    <div className={classes.value}>
+                        {data[planetId]['radius']}
+                    </div>
                 </div>
                 <div className={classes.paramWrap}>
                     <div className={classes.param}>AVERAGE TEMP.</div>
-                    <div className={classes.value}>16°C</div>
+                    <div className={classes.value}>
+                        {data[planetId]['temperature']}
+                    </div>
                 </div>
             </div>
         </div>

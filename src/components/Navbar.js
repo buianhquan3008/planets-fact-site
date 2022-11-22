@@ -38,14 +38,17 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export const Navbar = () => {
+export const Navbar = ({ planetId, setPlanetId }) => {
     const classes = useStyles();
     return (
         <>
             <div className={classes.navbar}>
                 <div className={classes.logo}>THE PLANETS</div>
-                <TemporaryDrawer />
-                <ListPlanet />
+                <TemporaryDrawer
+                    planetId={planetId}
+                    setPlanetId={setPlanetId}
+                />
+                <ListPlanet planetId={planetId} setPlanetId={setPlanetId} />
             </div>
             <div className={classes.line}></div>
         </>

@@ -1,5 +1,4 @@
 import { makeStyles } from '@material-ui/core';
-import React from 'react';
 import data from '../data.json';
 
 const useStyles = makeStyles((theme) => ({
@@ -47,8 +46,9 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function ListPlanet() {
+export default function ListPlanet({ planetId, setPlanetId }) {
     const classes = useStyles();
+
     return (
         <ul className={classes.ul}>
             {data.map((planet) => {
@@ -59,6 +59,7 @@ export default function ListPlanet() {
                         style={{
                             '--custom_color': `3px solid ${planet.color}`,
                         }}
+                        onClick={() => setPlanetId(planet.id)}
                     >
                         {planet.name}
                     </li>
